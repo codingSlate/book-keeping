@@ -58,10 +58,10 @@ const Container = () => {
     // setAllRecords(sortRecords([...allRecords, data]))
     
     axios.post('/api/records', data).then(({data}) => {
-      console.log(data)
+      // console.log(data)
       setAllRecords(sortRecords([...allRecords, data]))
+      setLiveText(`${data.bookName} Successfully Added.`)
     })
-    setLiveText(`${data.bookName} Successfully Added.`)
   }
   console.log("set records  ", allRecords)
   return (

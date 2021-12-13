@@ -6,32 +6,32 @@ import BookList from "./BookList"
 import Form from "./Form"
 import axcios from 'axios'
 
-let recordsData = [
-  {
-    id: 1,
-    bookName: 'Math Book',
-    authorName: 'Rohin',
-    description: 'Best Math books for kids',
-  },
-  {
-    id: 2,
-    bookName: 'Biology Book',
-    authorName: 'Moria',
-    description: 'Introductory to Biology',
-  },
-  {
-    id: 3,
-    bookName: 'Yoga',
-    authorName: 'Kalyan Mojie',
-    description: 'The healing of Body',
-  },
-  {
-    id: 4,
-    bookName: 'C++',
-    authorName: 'Crafton Ford',
-    description: 'Best programming practice',
-  },
-];
+// let recordsData = [
+//   {
+//     id: 1,
+//     bookName: 'Math Book',
+//     authorName: 'Rohin',
+//     description: 'Best Math books for kids',
+//   },
+//   {
+//     id: 2,
+//     bookName: 'Biology Book',
+//     authorName: 'Moria',
+//     description: 'Introductory to Biology',
+//   },
+//   {
+//     id: 3,
+//     bookName: 'Yoga',
+//     authorName: 'Kalyan Mojie',
+//     description: 'The healing of Body',
+//   },
+//   {
+//     id: 4,
+//     bookName: 'C++',
+//     authorName: 'Crafton Ford',
+//     description: 'Best programming practice',
+//   },
+// ];
 
 const sortRecords = rec => rec.sort((a, b) => {
   if (a.bookName < b.bookName) { return -1 }
@@ -47,7 +47,7 @@ const Container = () => {
   useEffect(()=>{
     axcios.get('/api/records').then(({data})=>{
       // console.log("Form axios", data)
-      setAllRecords(data)
+      setAllRecords(sortRecords(data))
     })
   }, [])
     

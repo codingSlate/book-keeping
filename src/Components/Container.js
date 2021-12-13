@@ -52,7 +52,7 @@ const Container = () => {
                 <Section secHeading="Add new Book" hLevel="2">
                     <Form onAdd={onAddHandler} />
                 </Section>
-                <Section secHeading="Available Books" hLevel="2">
+                <Section secHeading={`${allRecords.length} Books Available`} hLevel="2">
                     <BookList records={allRecords}/>
                 </Section>
             </main>

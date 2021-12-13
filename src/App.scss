@@ -93,13 +93,20 @@ main {
     }
 
     form {
-
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      margin: 0 auto;
       input,
       textarea,
       button {
         width: 100%;
         padding: 5px;
         margin-bottom: 4px;
+      }
+      button{
+        width: 100px;
+        margin: 0 auto;
       }
     }
   }

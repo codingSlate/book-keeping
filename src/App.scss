@@ -11,28 +11,38 @@ body {
     text-align: center;
   }
   h2 {
+    text-align: center;
     font-size: 1em;
     margin: 10px 0;
   }
-  .visually-hidden{
+  .visually-hidden:not(:focus):not(:active){
     position: absolute;
     width:1px;
     overflow: hidden;
-  
+  }
+  header{
+    background-color: #93caeb;
+    padding: 15px;
+  }
+  footer{
+    background-color: #93caeb;
+    text-align: center;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
   }
 }
 
 main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   section {
     padding: 15px;
-    // --gap: 15px;
-    // margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
-    // width: calc(100% + var(--gap));
 
-    flex: 1;
     border: 1px dotted gray;
 
 

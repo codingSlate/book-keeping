@@ -11,7 +11,7 @@ const Container = () => {
         // console.log("received from from ", data)
         setRecords([...records, data])
     }
-    // console.log("set records  ", records)
+    console.log("set records  ", records)
     return (
         <Fragment>
             <Header hLevel="1" />

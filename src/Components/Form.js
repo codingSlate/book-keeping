@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import uniqid from 'uniqid'
 
 const Form = ({onAdd}) => {
 
@@ -11,7 +12,7 @@ const Form = ({onAdd}) => {
     const onSubmitHandler = (e) => {
         e.preventDefault()
         // console.log("from from submit",  form)
-        onAdd(form)
+        onAdd({id: uniqid(), ...form})
     }
     return (
         <form onSubmit={onSubmitHandler}>

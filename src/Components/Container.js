@@ -5,7 +5,7 @@ import Footer from "./Footer"
 import BookList from "./BookList"
 import Form from "./Form"
 
-let records = [
+let recordsData = [
     {
       id:1,
       bookName: 'Math Book',
@@ -32,12 +32,17 @@ let records = [
     },
   ];
 
+const sortRecords = rec => rec.sort((a, b) => {
+  if(a.bookName < b.bookName){ return -1}
+  if(a.bookName > b.bookName){ return 1}
+  return 0
+})
+
 
 const Container = () => {
-    const [allRecords, setAllRecords] = useState(records)
+    const [allRecords, setAllRecords] = useState(sortRecords(recordsData))
     const onAddHandler = data => {
-        // console.log("received from from ", data)
-        setAllRecords([...allRecords, data])
+      setAllRecords(sortRecords([...allRecords, data]))
     }
     console.log("set records  ", allRecords)
     return (

@@ -5,6 +5,7 @@ import Footer from "./Footer"
 import BookList from "./BookList"
 import Form from "./Form"
 import axcios from 'axios'
+import axios from "axios"
 
 // let recordsData = [
 //   {
@@ -54,7 +55,12 @@ const Container = () => {
 
 
   const onAddHandler = data => {
-    setAllRecords(sortRecords([...allRecords, data]))
+    // setAllRecords(sortRecords([...allRecords, data]))
+    
+    axios.post('/api/records', data).then(({data}) => {
+      console.log(data)
+      setAllRecords(sortRecords([...allRecords, data]))
+    })
     setLiveText(`${data.bookName} Successfully Added.`)
   }
   console.log("set records  ", allRecords)

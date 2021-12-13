@@ -44,4 +44,14 @@ app.get('/api/records', (req, res) =>{
     res.send(recordsData)
 })
 
+// post request 
+app.post('/api/records', (req, res) =>{
+ const newRecord = {
+   id: recordsData.reduce((acc, item) => { item.id > acc ? item.id: acc }, 0) + 1 , 
+   ...req.body
+ }
+ recordsData.push(newRecord)
+ res.send(newRecord)
+})
+
 app.listen(port, () => console.log(`Listening my own server ${port}`))

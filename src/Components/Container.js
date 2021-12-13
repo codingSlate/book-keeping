@@ -1,9 +1,10 @@
-import { Fragment, useState } from "react"
+import { Fragment, useState, useEffect } from "react"
 import Header from './Header'
 import Section from "./Section"
 import Footer from "./Footer"
 import BookList from "./BookList"
 import Form from "./Form"
+import axcios from 'axios'
 
 let recordsData = [
   {
@@ -42,6 +43,10 @@ const sortRecords = rec => rec.sort((a, b) => {
 const Container = () => {
   const [allRecords, setAllRecords] = useState(sortRecords(recordsData))
   const [liveText, setLiveText] = useState(false)
+
+  useEffect(()=>{
+    axcios.get('/api/records').then(response => console.log("Form axios", response))
+  }, [])
 
   const onAddHandler = data => {
     setAllRecords(sortRecords([...allRecords, data]))

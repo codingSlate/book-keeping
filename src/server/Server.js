@@ -2,6 +2,8 @@
 // $ npm install express body-parser --save 
 // to run 
 // $ node server
+// in package.json added 
+// "proxy": "http://localhost:5000"
 
 const express = require('express')
 const bodyParser = require('body-parser')

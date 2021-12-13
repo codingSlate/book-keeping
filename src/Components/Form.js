@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Form = () => {
+const Form = ({onAdd}) => {
 
     const [form, setForm] = useState('')
     
@@ -10,7 +10,8 @@ const Form = () => {
     }
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        console.log(form)
+        // console.log("from from submit",  form)
+        onAdd(form)
     }
     return (
         <form onSubmit={onSubmitHandler}>

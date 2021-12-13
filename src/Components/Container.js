@@ -20,7 +20,7 @@ const Container = () => {
                     <Form onAdd={onAddHandler} />
                 </Section>
                 <Section secHeading="Available Books" hLevel="2">
-                    <BookList />
+                    <BookList records={records}/>
                 </Section>
             </main>
             <Footer />

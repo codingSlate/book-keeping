@@ -49,18 +49,39 @@ main {
     ul {
       margin: 0;
       padding: 0 15px;
-      list-style: decimal;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:flex-start;
+      margin: auto;
 
       li {
-        margin: 5px;
+        margin: .5%;
+        position: relative;
         border-radius: 5px;
-        padding: 5px;
+        padding: 15px 15px 5px 15px;
         background-color: rgb(218, 255, 221);
-
-        h4 {
-          margin: 0;
+        height: auto;
+        width: 31.333333%;
+        span{
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          top: -8px;
+          left: -8px;
+          background-color: #93caeb;
+          padding: 5px;
+          border-radius: 50px;
+          text-align: center;
         }
 
+        h3, h4 {
+          margin: 0;
+        }
+        h4{
+          font-style: italic;
+          margin: 4px 0;
+        }
         div {
           font-size: 0.8rem;
         }

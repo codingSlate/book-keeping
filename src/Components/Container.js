@@ -2,14 +2,17 @@ import { Fragment } from "react"
 import Header from './Header'
 import Section from "./Section"
 import Footer from "./Footer"
+import BookList from "./BookList"
 
 const Container = () =>{
     return(
     <Fragment>
        <Header hLevel="1"/>
         <main>
-            <Section secHeading="Fill the form" hLevel="2"/>
-            <Section secHeading="Available Records" hLevel="2"/>
+            <Section secHeading="Add new Book" hLevel="2"/>
+            <Section secHeading="Available Books" hLevel="2">
+                <BookList/>
+            </Section>
         </main>
         <Footer/>
     </Fragment>

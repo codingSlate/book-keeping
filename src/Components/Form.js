@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import uniqid from 'uniqid'
+import Input from './template/Input'
 
 const Form = ({onAdd}) => {
 
@@ -18,6 +19,13 @@ const Form = ({onAdd}) => {
         <form onSubmit={onSubmitHandler}>
             <label htmlFor="bookName">Book Name</label>
             <input type="text" name="bookName" id="bookName" onChange={onChangeHandler} />
+            {/* <Input
+            labelText="Book Name"
+            type="text" 
+            name="bookName" 
+            id="bookName" 
+            onChange={onChangeHandler}
+            /> */}
             <label htmlFor="authorName">Book Name</label>
             <input type="text" name="authorName" id="authorName" onChange={onChangeHandler} />
             <label htmlFor="description">Book Name</label>

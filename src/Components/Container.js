@@ -37,9 +37,9 @@ const Container = () => {
     const [allRecords, setAllRecords] = useState(records)
     const onAddHandler = data => {
         // console.log("received from from ", data)
-        setAllRecords([...records, data])
+        setAllRecords([...allRecords, data])
     }
-    console.log("set records  ", records)
+    console.log("set records  ", allRecords)
     return (
         <Fragment>
             <Header hLevel="1" />

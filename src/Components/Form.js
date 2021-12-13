@@ -17,20 +17,34 @@ const Form = ({onAdd}) => {
     }
     return (
         <form onSubmit={onSubmitHandler}>
-            <label htmlFor="bookName">Book Name</label>
-            <input type="text" name="bookName" id="bookName" onChange={onChangeHandler} />
-            {/* <Input
+            <Input
             labelText="Book Name"
             type="text" 
             name="bookName" 
             id="bookName" 
             onChange={onChangeHandler}
-            /> */}
-            <label htmlFor="authorName">Book Name</label>
+            />
+            <Input
+            labelText="Author Name"
+            type="text" 
+            name="authorName" 
+            id="authorName" 
+            onChange={onChangeHandler}
+            />
+            <Input
+            labelText="Description"
+            type="textarea" 
+            name="description" 
+            id="description" 
+            onChange={onChangeHandler}
+            />
+            <button type="submit">Add</button>
+            {/* <label htmlFor="bookName">Book Name</label>
+            <input type="text" name="bookName" id="bookName" onChange={onChangeHandler} /> */}
+            {/* <label htmlFor="authorName">Book Name</label>
             <input type="text" name="authorName" id="authorName" onChange={onChangeHandler} />
             <label htmlFor="description">Book Name</label>
-            <textarea type="text" name="description" id="description" onChange={onChangeHandler} ></textarea>
-            <button type="submit">Add</button>
+            <textarea type="text" name="description" id="description" onChange={onChangeHandler} ></textarea> */}
         </form>
     )
 }

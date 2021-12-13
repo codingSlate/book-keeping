@@ -1,26 +1,26 @@
 // let records = [
 //     {
 //       id:1,
-//       recordName: 'Math Book',
-//       writerName: 'Rohin',
+//       bookName: 'Math Book',
+//       authorName: 'Rohin',
 //       description: 'Best Math books for kids',
 //     },
 //     {
 //       id:2,
-//       recordName: 'Biology Book',
-//       writerName: 'Moria',
+//       bookName: 'Biology Book',
+//       authorName: 'Moria',
 //       description: 'Introductory to Biology',
 //     },
 //     {
 //       id:3,
-//       recordName: 'Yoga',
-//       writerName: 'Kalyan Mojie',
+//       bookName: 'Yoga',
+//       authorName: 'Kalyan Mojie',
 //       description: 'The healing of Body',
 //     },
 //     {
 //       id:4,
-//       recordName: 'C++',
-//       writerName: 'Crafton Ford',
+//       bookName: 'C++',
+//       authorName: 'Crafton Ford',
 //       description: 'Best programming practice',
 //     },
 //   ];
@@ -29,10 +29,10 @@ const BookList = ({records}) =>{
 
     return(
     <ul>
-        {records.map(({id, recordName, writerName, description})=>(<li key={id}>
+        {records.map(({id, bookName, authorName, description})=>(<li key={id}>
             <span>{id}</span>
-            <h3>{recordName}</h3>
-            <h4>{writerName}</h4>
+            <h3>{bookName}</h3>
+            <h4>{authorName}</h4>
             <p>{description}</p>
         </li>))}
     </ul>

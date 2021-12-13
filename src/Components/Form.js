@@ -3,50 +3,53 @@ import uniqid from 'uniqid'
 import Input from './template/Input'
 
 let initForm = {
-      bookName: '',
-      authorName: '',
-      description: ''
-    }
+    bookName: '',
+    authorName: '',
+    description: ''
+}
 
-const Form = ({onAdd}) => {
+const Form = ({ onAdd }) => {
 
     const [form, setForm] = useState(initForm)
-    
+
     const onChangeHandler = (e) => {
         // console.log(e.target.value)
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({ ...form, [e.target.name]: e.target.value })
     }
     const onSubmitHandler = (e) => {
         e.preventDefault()
         // console.log("from from submit",  form)
-        onAdd({id: uniqid(), ...form})
+        if (form.bookName === '' || form.authorName === '' || form.description === '') {
+            return
+        }
+        onAdd({ id: uniqid(), ...form })
         setForm(initForm)
     }
     return (
         <form onSubmit={onSubmitHandler}>
             <Input
-            labelText="Book Name"
-            type="text" 
-            name="bookName" 
-            id="bookName" 
-            onChange={onChangeHandler}
-            value={form.bookName}
+                labelText="Book Name"
+                type="text"
+                name="bookName"
+                id="bookName"
+                onChange={onChangeHandler}
+                value={form.bookName}
             />
             <Input
-            labelText="Author Name"
-            type="text" 
-            name="authorName" 
-            id="authorName" 
-            onChange={onChangeHandler}
-            value={form.authorName}
+                labelText="Author Name"
+                type="text"
+                name="authorName"
+                id="authorName"
+                onChange={onChangeHandler}
+                value={form.authorName}
             />
             <Input
-            labelText="Description"
-            type="textarea" 
-            name="description" 
-            id="description" 
-            onChange={onChangeHandler}
-            value={form.description}
+                labelText="Description"
+                type="textarea"
+                name="description"
+                id="description"
+                onChange={onChangeHandler}
+                value={form.description}
             />
             <button type="submit">Add</button>
             {/* <label htmlFor="bookName">Book Name</label>

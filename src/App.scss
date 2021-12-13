@@ -63,12 +63,24 @@ main {
         background-color: rgb(218, 255, 221);
         height: auto;
         width: 31.333333%;
+        // span{
+        //   position: absolute;
+        //   width: 30px;
+        //   height: 30px;
+        //   top: -8px;
+        //   left: -8px;
+        //   background-color: #93caeb;
+        //   padding: 5px;
+        //   border-radius: 50px;
+        //   text-align: center;
+        // }
         span{
           position: absolute;
-          width: 30px;
+          min-width: 30px;
+          width: auto;
           height: 30px;
           top: -8px;
-          left: -8px;
+          right: -8px;
           background-color: #93caeb;
           padding: 5px;
           border-radius: 50px;

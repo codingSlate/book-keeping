@@ -41,12 +41,17 @@ const sortRecords = rec => rec.sort((a, b) => {
 
 
 const Container = () => {
-  const [allRecords, setAllRecords] = useState(sortRecords(recordsData))
+  const [allRecords, setAllRecords] = useState([])
   const [liveText, setLiveText] = useState(false)
 
   useEffect(()=>{
-    axcios.get('/api/records').then(response => console.log("Form axios", response))
+    axcios.get('/api/records').then(({data})=>{
+      // console.log("Form axios", data)
+      setAllRecords(data)
+    })
   }, [])
+    
+
 
   const onAddHandler = data => {
     setAllRecords(sortRecords([...allRecords, data]))

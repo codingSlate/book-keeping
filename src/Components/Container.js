@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react"
+import { Fragment, useState, useEffect, useRef } from "react"
 import Header from './Header'
 import Section from "./Section"
 import Footer from "./Footer"
@@ -41,15 +41,22 @@ const sortRecords = rec => rec.sort((a, b) => {
 })
 
 
-const Container = () => {
+const Container = ({setShowApp}) => {
   const [allRecords, setAllRecords] = useState([])
   const [liveText, setLiveText] = useState(false)
+  const isMounted = useRef(true)
 
   useEffect(()=>{
     axcios.get('/api/records').then(({data})=>{
       // console.log("Form axios", data)
-      setAllRecords(sortRecords(data))
+      if(isMounted.current){
+        setAllRecords(sortRecords(data))
+      }
     })
+
+    return ()=>{
+      isMounted.current = false
+    }
   }, [])
     
 
@@ -60,10 +67,13 @@ const Container = () => {
     data.id = allRecords.reduce((acc, item)=> acc > item.id ? acc : item.id, 0 ) +1
     
     axios.post('/api/records', data).then(({data}) => {
-      // setAllRecords(sortRecords([...allRecords, data]))
-      setAllRecords(sortRecords([...allRecords, data]))
-      setLiveText(`${data.bookName} Successfully Added.`)
+      if(isMounted.current){
+        // setAllRecords(sortRecords([...allRecords, data]))
+        setAllRecords(sortRecords([...allRecords, data]))
+        setLiveText(`${data.bookName} Successfully Added.`)
+      }
     })
+    setShowApp(false)
   }
 
   return (
@@ -87,4 +97,12 @@ const Container = () => {
     </Fragment>
   )
 }
-export default Container
+
+// fix memory leak : cannout update react state on an unmounted object 
+// use useEffect( cariable available to all renders) 
+// in cleanup function of useEffect : because it executed once when component unmount 
+const Wrapper =() =>{
+  const [showApp, setShowApp] = useState(true)
+  return showApp && <Container setShowApp={setShowApp}/>
+}
+export default Wrapper

@@ -48,7 +48,12 @@ const Container = ({ setShowApp }) => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const { data } = await axcios.get('/api/records')
+      const { data } = await axcios.get('/api/records', {
+        header: {
+          'Cache-Control' : 'private',
+          'X-Custom-Header':'some-value'
+        }
+      })
       if (isMounted.current) {
         setAllRecords(sortRecords(data))
       }

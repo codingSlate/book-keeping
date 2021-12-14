@@ -73,7 +73,7 @@ const Container = ({setShowApp}) => {
         setLiveText(`${data.bookName} Successfully Added.`)
       }
     })
-    setShowApp(false)
+    // setShowApp(false)
   }
 
   return (

@@ -23,6 +23,7 @@ const Form = ({ onAdd }) => {
             return
         }
         // onAdd({ id: uniqid(), ...form })
+        // onAdd({...form})
         onAdd(form)
         setForm(initForm)
     }

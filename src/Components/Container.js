@@ -41,68 +41,69 @@ const sortRecords = rec => rec.sort((a, b) => {
 })
 
 
-const Container = ({setShowApp}) => {
+const Container = ({ setShowApp }) => {
   const [allRecords, setAllRecords] = useState([])
   const [liveText, setLiveText] = useState(false)
   const isMounted = useRef(true)
 
-  useEffect(()=>{
-    axcios.get('/api/records').then(({data})=>{
-      // console.log("Form axios", data)
-      if(isMounted.current){
+  useEffect(() => {
+    const fetchdata = async () => {
+      const { data } = await axcios.get('/api/records')
+      if (isMounted.current) {
         setAllRecords(sortRecords(data))
       }
-    })
+    }
 
-    return ()=>{
+    fetchdata()
+
+    return () => {
       isMounted.current = false
     }
   }, [])
-    
 
 
-  const onAddHandler = data => {
-    // setAllRecords(sortRecords([...allRecords, data]))
+
+  const onAddHandler = async entry => {
     // new Id created 
-    data.id = allRecords.reduce((acc, item)=> acc > item.id ? acc : item.id, 0 ) +1
+    entry.id = allRecords.reduce((acc, item) => acc > item.id ? acc : item.id, 0) + 1
     
-    axios.post('/api/records', data).then(({data}) => {
-      if(isMounted.current){
-        // setAllRecords(sortRecords([...allRecords, data]))
-        setAllRecords(sortRecords([...allRecords, data]))
-        setLiveText(`${data.bookName} Successfully Added.`)
-      }
-    })
+    const { data } = await axios.post('/api/records', entry)
+    if (isMounted.current) {
+      // setAllRecords(sortRecords([...allRecords, data]))
+      setAllRecords(sortRecords([...allRecords, data]))
+      setLiveText(`${data.bookName} Successfully Added.`)
+    }
+
     // setShowApp(false)
   }
 
-  return (
-    <Fragment>
-      <Header hLevel="1" />
-      <main>
-        <Section secHeading="Add new Book" hLevel="2">
-          <Form onAdd={onAddHandler} />
-        </Section>
-        <Section secHeading={`${allRecords.length} Books Available`} hLevel="2">
-          <BookList records={allRecords} />
-        </Section>
-        <div
-          className="visually-hidden"
-          aria-live="polite"
-          aria-atomic="true">
-          {liveText}
-        </div>
-      </main>
-      <Footer />
-    </Fragment>
-  )
+return (
+  <Fragment>
+    <Header hLevel="1" />
+    <main>
+      <Section secHeading="Add new Book" hLevel="2">
+        <Form onAdd={onAddHandler} />
+      </Section>
+      <Section secHeading={`${allRecords.length} Books Available`} hLevel="2">
+        <BookList records={allRecords} />
+      </Section>
+      <div
+        className="visually-hidden"
+        aria-live="polite"
+        aria-atomic="true">
+        {liveText}
+      </div>
+    </main>
+    <Footer />
+  </Fragment>
+)
 }
 
 // fix memory leak : cannout update react state on an unmounted object 
 // use useEffect( cariable available to all renders) 
 // in cleanup function of useEffect : because it executed once when component unmount 
-const Wrapper =() =>{
+const Wrapper = () => {
   const [showApp, setShowApp] = useState(true)
-  return showApp && <Container setShowApp={setShowApp}/>
+  return showApp && <Container setShowApp={setShowApp} />
 }
 export default Wrapper

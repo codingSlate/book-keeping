@@ -56,14 +56,16 @@ const Container = () => {
 
   const onAddHandler = data => {
     // setAllRecords(sortRecords([...allRecords, data]))
+    // new Id created 
+    data.id = allRecords.reduce((acc, item)=> acc > item.id ? acc : item.id, 0 ) +1
     
     axios.post('/api/records', data).then(({data}) => {
-      // console.log(data)
+      // setAllRecords(sortRecords([...allRecords, data]))
       setAllRecords(sortRecords([...allRecords, data]))
       setLiveText(`${data.bookName} Successfully Added.`)
     })
   }
-  console.log("set records  ", allRecords)
+
   return (
     <Fragment>
       <Header hLevel="1" />

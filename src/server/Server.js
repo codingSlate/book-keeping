@@ -47,9 +47,10 @@ app.get('/api/records', (req, res) =>{
 // post request 
 app.post('/api/records', (req, res) =>{
  const newRecord = {
-   id: recordsData.reduce((acc, item) => { item.id > acc ? item.id: acc }, 0) + 1 , 
+   id: recordsData.reduce((acc, item) => { item.id > acc ? item.id: acc }, 0) + 1 , //  this line can be ommitted  
    ...req.body
  }
+ 
  recordsData.push(newRecord)
  res.send(newRecord)
 })

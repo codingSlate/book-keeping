@@ -22,7 +22,8 @@ const Form = ({ onAdd }) => {
         if (form.bookName === '' || form.authorName === '' || form.description === '') {
             return
         }
-        onAdd({ id: uniqid(), ...form })
+        // onAdd({ id: uniqid(), ...form })
+        onAdd(form)
         setForm(initForm)
     }
     return (
